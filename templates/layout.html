@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Api Wars</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/bootstrapCSS/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/bootstrapCSS/bootstrap-grid.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrapJS/bootstrap.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    {% block head %} {% endblock %}
+</head>
+<body>
+
+
+
+{% block content %} {% endblock %}
+</body>
+</html>
