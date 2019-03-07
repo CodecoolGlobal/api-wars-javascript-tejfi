@@ -4,6 +4,16 @@
 
 {% endblock %}
 
-{% block content %}
 
+{% include 'nav.html' %}
+
+{% block content %}
+    <h1>Star Wars universe planets</h1>
+    <div class="btn-container">
+        <button id="prev" class="btn btn-primary">Previous</button>
+        <button id="next" class="btn btn-primary">Next</button>
+    </div>
+    <div id="planetstable">
+
+    </div>
 {% endblock %}
