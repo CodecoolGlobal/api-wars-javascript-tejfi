@@ -6,6 +6,7 @@ import data_manager,os
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
 
+
 def logged_user_info():
     if 'username' in session:
         logged_in = 'Logged in as %s' % escape(session['username'])
@@ -18,7 +19,7 @@ def login():
         session['username'] = request.form.get('username')
         plain_text_password = request.form.get("password")
 
-        hashed_password = data_manager.get_password_by_user(session['user_name'])
+        hashed_password = data_manager.get_password_by_user(session['username'])
         verify = data_manager.verify_password(plain_text_password, hashed_password["password"])
         if 'username' in session and verify:
             logged_in = 'Logged in as %s' % escape(session['username'])

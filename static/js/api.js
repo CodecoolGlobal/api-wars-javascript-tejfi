@@ -43,7 +43,6 @@ function generateTable(pageCounter) {
             planetsTable.dataset.nextPage = dataNext;
             let prevPageCheck = planetsTable.dataset.prevPage;
             planetsTable.dataset.prevPage = dataPrev;
-            console.log(response);
             let planetsData = '';
             $.each(dataResults, function (value, key) {
                 planetsData += '<tr>';
@@ -53,7 +52,6 @@ function generateTable(pageCounter) {
                 planetsData += `<td>${key.terrain}</td>`;
                 planetsData += `<td>${key.surface_water}</td>`;
                 planetsData += `<td>${key.population}</td>`;
-                console.log(key.residents);
                 if (key.residents.length != 0) {
                     planetsData += `<td><button class="btn btn-primary quickViewTrigger" id="${value}">${key.residents.length + ' resident(s)'}</button></td>`;
 
@@ -140,59 +138,16 @@ function residents() {
         });
 }
 
-
-
-/*
-function modal(){
-    $(document).ready(function() {
-	"use strict";
-
-	// OPEN MODAL ON TRIGGER CLICK
-	$(".quickViewTrigger").on('click', function () {
-		var $quickview = $(this).next(".quickViewContainer");
-		$quickview.dequeue().stop().slideToggle(500, "easeInOutQuart");
-		$(".quickViewContainer").not($quickview).slideUp(200, "easeInOutQuart");
-	});
-
-	// CLOSE MODAL WITH MODAL CLOSE BUTTON
-	$(".close").click(function() {
-		$(".quickViewContainer").fadeOut("slow");
-	});
-
+$('#loginModal').on('show.bs.modal', function (event) {
+  let button = $(event.relatedTarget) // Button that triggered the modal
+  let recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  let modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+  console.log('modal');
 });
-
-// CLOSE MODAL ON ESC KEY PRESS
-$(document).on('keyup', function(e) {
-	"use strict";
-	if (e.keyCode === 27) {
-		$(".quickViewContainer").fadeOut("slow");
-	}
-});
-
-// CLOSE MODAL ON CLICK OUTSIDE MODAL
-$(document).mouseup(function (e) {
-	"use strict";
-    var container = $(".quickViewContainer");
-    if (!container.is(e.target) && container.has(e.target).length === 0)
-    {
-        $('.quickViewContainer').fadeOut("slow");
-    }
-});
-}
-*/
-
-
-
-
-
-
-$(document).ready(function(){
-  $("#myBtn").click(function(){
-    $("#myModal").modal();
-  });
-});
-
-
 
 function init() {
     let pageCounter = 1;

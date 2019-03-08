@@ -1,8 +1,7 @@
-
-{% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-    <img src="{{ url_for('static', filename='logo/swlogo.png') }}"alt="navbar-logo" style="width:30px;height:30px;">
+        <img src="{{ url_for('static', filename='logo/swlogo.png') }}" alt="navbar-logo"
+             style="width:30px;height:30px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,26 +13,59 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">Planet List</a>
             </li>
+            {% if logged_in is not defined %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('registration') }}">Registration</a>
+                </li>
+            {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('registration') }}">Registration</a>
-            </li><li class="nav-item">
-            <button class="login-button nav-link primary"  type="button" id="myBtn" ><span>Login </span>
-
-            </button>
+                {% if logged_in is not defined %}
+                <button type="button" class="btn btn-primary login-button nav-link" data-toggle="modal"
+                        data-target="#loginModal"
+                        data-whatever="username"><span>Login </span>
+                </button>
+                {% endif %}
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+            <li class="nav-item">
+                {% if logged_in is defined %}
+                    <a class="nav-link" href="{{ url_for('index' ) }}">Logout</a>
+                {% endif %}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"><p>{{ logged_in }}</p></a>
             </li>
         </ul>
     </div>
-</nav>
 
-{% endblock %}
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for("login") }}" method="POST" id='loginForm'>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username:</label>
+                            <input type="text" autocomplete="off" class="form-control" name="username"
+                                   placeholder="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input class="form-control" autocomplete="off" type="password" name="password"
+                                   placeholder="password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
