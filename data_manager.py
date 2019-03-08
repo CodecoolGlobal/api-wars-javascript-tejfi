@@ -23,4 +23,12 @@ def add_new_user(cursor, username, password):
                     """, {'username': username, 'password': password})
 
 
+@database_common.connection_handler
+def get_password_by_user(cursor, username):
+    cursor.execute("""
+    SELECT password FROM users
+    WHERE username = %(username)s;
 
+    """, {"username": username})
+    password = cursor.fetchone()
+    return password

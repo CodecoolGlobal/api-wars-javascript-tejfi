@@ -2,42 +2,21 @@
 
 
 {% block content %}
-<div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-          ×
-        </button>
-        <h4 class="modal-title" id="classModalLabel">
-              Class Info
-            </h4>
-      </div>
-      <div class="modal-body">
-        <table id="classTable" class="table table-bordered">
-          <thead>
-          </thead>
-          <tbody>
-            <tr>
-              <td>CLN</td>
-              <td>Last Updated Date</td>
-              <td>Class Name</td>
-              <td># Tests</td>
-              <td>Test Coverage (Instruction)</td>
-              <td>Test Coverage (Complexity)</td>
-              <td>Complex Covered</td>
-              <td>Complex Total</td>
-              <td>Category</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
+<div class="quickViewContainer">
+					<div id="quickViewCloseButton" class="close" style="margin-right:10px;"><span></span></div>
+					<div class="quickViewTitle">MODAL 1</div>
+					<div class="quickViewBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus dolor, vestibulum id fermentum molestie, tempor in ligula. Sed quis leo a erat vehicula hendrerit. Morbi ac elementum risus. Donec pretium euismod sapien quis sagittis. Phasellus sit amet
+	volutpat sem.</div>
+				</div>
+
+
+				<div class="quickViewTrigger">MODAL TRIGGER 2</div>
+				<!-- HIDDEN -->
+				<div class="quickViewContainer">
+				<div id="quickViewCloseButton" class="close" style="margin-right:10px;"><span></span></div>
+				<div class="quickViewTitle">MODAL 2</div>
+				<div class="quickViewBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacus dolor, vestibulum id fermentum molestie, tempor in ligula. Sed quis leo a erat vehicula hendrerit. Morbi ac elementum risus. Donec pretium euismod sapien quis sagittis. Phasellus sit amet
+					volutpat sem.</div>
+				</div>
 </div>
 {% endblock %}

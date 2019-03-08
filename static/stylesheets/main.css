@@ -16,3 +16,10 @@ th, td {
 .hide-me {
     display: none;
 }
+
+
+.login-button {
+    border: none;
+    background: none;
+    padding: none;
+}
